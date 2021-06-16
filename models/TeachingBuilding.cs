@@ -14,11 +14,13 @@ namespace CivCampusExercise_2021.models
         }
 
         public void AddRoom(int capacity, int roomNo) {
-            //TODO: make roomId a string created from buildingId + RoomNo as text
-            string roomId = "";
+            //TODO Done: make roomId a string created from buildingId + RoomNo as text
+            string roomId = BuildingId+roomNo;
             
-            //TODO: fix the below to add the new room to the rooms list
-            Rooms.Add(new Room(0, 0, null));
+            uint ucapacity=(uint)(int)capacity;
+
+            //TODO Done: fix the below to add the new room to the rooms list
+            Rooms.Add(new Room(ucapacity, roomNo, roomId));
         }
 
         /// <summary>
@@ -37,7 +39,10 @@ namespace CivCampusExercise_2021.models
         public int GetBuildingCapacity() {
             int total = 0;
             
-            // TODO: calculate and store into total all of the room capacities for the building combined
+            // TODO Done: calculate and store into total all of the room capacities for the building combined
+            foreach(var room in Rooms) {
+                total += (int)(uint)room.Capacity;
+            }
 
             return total;
         }
